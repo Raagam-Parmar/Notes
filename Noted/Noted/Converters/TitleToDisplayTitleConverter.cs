@@ -9,7 +9,7 @@ public partial class TitleToDisplayTitleConverter : IValueConverter
     public object Convert(object value, Type targetType, object parameter, string language)
     {
         return value is string title && string.IsNullOrEmpty(title)
-            ? "<Untitled>"
+            ? "Untitled"
             : value;
     }
 
