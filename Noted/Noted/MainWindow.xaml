@@ -15,7 +15,7 @@
         <MicaBackdrop />
     </Window.SystemBackdrop>
 
-    <Grid x:Name="RootGrid">
+    <Grid x:Name="RootGrid" Loaded="RootGrid_Loaded">
         <Grid.Resources>
             <converters:NullToVisibilityConverter
                 x:Key="NullToVisibilityConverter" />
@@ -28,11 +28,18 @@
         </Grid.Resources>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition x:Name="ListColumn" 
+                              Width="1*"
+                              MinWidth="180"/>
+            
+            <ColumnDefinition Width="5"/>
+            
+            <ColumnDefinition x:Name="EditorColumn" 
+                              Width="2*"
+                              MinWidth="250"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0">
+        <Grid Grid.Column="0" x:Name="ListPanel">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
@@ -79,8 +86,15 @@
                        Visibility="{Binding NoteList.HasNoNotes, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"/>
         </Grid>
 
-
-        <Grid Grid.Column="1"
+        <Border x:Name="Splitter"
+                Grid.Column="1"
+                Background="Transparent"
+                PointerPressed="Splitter_PointerPressed"
+                PointerMoved="Splitter_PointerMoved"
+                PointerReleased="Splitter_PointerReleased"
+                PointerCanceled="Splitter_PointerCanceled" />
+        
+        <Grid Grid.Column="2" x:Name="EditorPanel"
               Visibility="{Binding NoteList.SelectedNote, Mode=OneWay, Converter={StaticResource NullToVisibilityConverter}}">
 
             <Grid.RowDefinitions>
