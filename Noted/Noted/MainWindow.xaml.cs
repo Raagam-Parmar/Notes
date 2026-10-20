@@ -2,6 +2,7 @@
 /// Date   : 18-10-2026
 
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 
 using Noted.ViewModels;
 
@@ -21,5 +22,13 @@ public sealed partial class MainWindow : Window
     private void NewNoteButton_Click(object sender, RoutedEventArgs e)
     {
         NoteList.AddNote();
+    }
+
+    private void DeleteNoteButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button button && button.DataContext is SingleNote note)
+        {
+            NoteList.RemoveNote(note);
+        }
     }
 }

@@ -44,13 +44,32 @@
                     HorizontalAlignment="Center"
                     Click="NewNoteButton_Click"/>
 
+            <!-- Notes List Panel -->
             <ListView Grid.Row="1"
                       ItemsSource="{x:Bind NoteList.Notes}"
                       SelectedItem="{x:Bind NoteList.SelectedNote, Mode=TwoWay}">
+                <!-- Template to view a SingleNote -->
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="viewmodels:SingleNote">
-                        <TextBlock Text="{Binding Title, Mode=OneWay, Converter={StaticResource TitleToDisplayTitleConverter}}"
-                                   FontStyle="{Binding Title, Mode=OneWay, Converter={StaticResource TitleToFontStyleConverter}}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <!-- Note title -->
+                            <TextBlock Text="{Binding Title, Mode=OneWay, Converter={StaticResource TitleToDisplayTitleConverter}}"
+                                       FontStyle="{Binding Title, Mode=OneWay, Converter={StaticResource TitleToFontStyleConverter}}"
+                                       Grid.Column="0"
+                                       VerticalAlignment="Center"/>
+                            
+                            <!-- Delete button -->
+                            <Button Content="Delete"
+                                    Click="DeleteNoteButton_Click"
+                                    HorizontalAlignment="Right"
+                                    Grid.Column="1"
+                                    VerticalAlignment="Center"/>
+                        </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
