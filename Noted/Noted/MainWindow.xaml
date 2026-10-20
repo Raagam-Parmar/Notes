@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodels="using:Noted.ViewModels"
     xmlns:converters="using:Noted.Converters"
+    xmlns:controls="using:Noted.Controls"
     mc:Ignorable="d"
     Title="Noted">
 
@@ -86,13 +87,14 @@
                        Visibility="{Binding NoteList.HasNoNotes, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"/>
         </Grid>
 
-        <Border x:Name="Splitter"
-                Grid.Column="1"
-                Background="Transparent"
-                PointerPressed="Splitter_PointerPressed"
-                PointerMoved="Splitter_PointerMoved"
-                PointerReleased="Splitter_PointerReleased"
-                PointerCanceled="Splitter_PointerCanceled" />
+        <controls:ResizeHandle 
+            x:Name="Splitter"
+            Grid.Column="1"
+            Background="Transparent"
+            PointerPressed="Splitter_PointerPressed"
+            PointerMoved="Splitter_PointerMoved"
+            PointerReleased="Splitter_PointerReleased"
+            PointerCanceled="Splitter_PointerCanceled" />
         
         <Grid Grid.Column="2" x:Name="EditorPanel"
               Visibility="{Binding NoteList.SelectedNote, Mode=OneWay, Converter={StaticResource NullToVisibilityConverter}}">
