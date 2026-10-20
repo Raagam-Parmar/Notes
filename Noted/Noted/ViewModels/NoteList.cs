@@ -54,6 +54,8 @@ public partial class NoteList : INotifyPropertyChanged
         SingleNote singleNote = new(note);
         Notes.Add(singleNote);
 
+        SelectedNote = singleNote;
+
         OnPropertyChanged(nameof(HasNoNotes));
         OnPropertyChanged(nameof(HasAtLeastOneNote));
     }
