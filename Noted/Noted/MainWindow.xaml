@@ -112,7 +112,9 @@
             <TextBox Text="{x:Bind NoteList.SelectedNote.Body, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Name="Body"
                      PlaceholderText="Body"
-                     Grid.Row="1"/>
+                     Grid.Row="1"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"/>
         </Grid>
     </Grid>
 </Window>
