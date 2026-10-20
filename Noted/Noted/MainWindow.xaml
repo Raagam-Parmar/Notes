@@ -45,7 +45,7 @@
                       SelectedItem="{x:Bind NoteList.SelectedNote, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="viewmodels:SingleNote">
-                        <TextBlock Text="{x:Bind Title}"/>
+                        <TextBlock Text="{x:Bind Title, Mode=TwoWay}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
