@@ -64,12 +64,12 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBox Text="{x:Bind NoteList.SelectedNote.Title, Mode=TwoWay}"
+            <TextBox Text="{x:Bind NoteList.SelectedNote.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Name="Title"
                      PlaceholderText="Title"
                      Grid.Row="0"/>
 
-            <TextBox Text="{x:Bind NoteList.SelectedNote.Body, Mode=TwoWay}"
+            <TextBox Text="{x:Bind NoteList.SelectedNote.Body, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Name="Body"
                      PlaceholderText="Body"
                      Grid.Row="1"/>
