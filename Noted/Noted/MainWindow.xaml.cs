@@ -17,4 +17,9 @@ public sealed partial class MainWindow : Window
     {
         InitializeComponent();
     }
+
+    private void NewNoteButton_Click(object sender, RoutedEventArgs e)
+    {
+        NoteList.AddNote();
+    }
 }

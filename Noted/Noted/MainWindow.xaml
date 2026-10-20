@@ -37,7 +37,8 @@
 
             <Button Content="New Note"
                     Grid.Row="0"
-                    HorizontalAlignment="Center"/>
+                    HorizontalAlignment="Center"
+                    Click="NewNoteButton_Click"/>
 
             <ListView Grid.Row="1"
                       ItemsSource="{x:Bind NoteList.Notes}"
@@ -67,7 +68,7 @@
                      Name="Title"
                      PlaceholderText="Title"
                      Grid.Row="0"/>
-            
+
             <TextBox Text="{x:Bind NoteList.SelectedNote.Body, Mode=TwoWay}"
                      Name="Body"
                      PlaceholderText="Body"
