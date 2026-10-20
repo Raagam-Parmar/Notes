@@ -44,7 +44,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
             <Button Content="New Note"
@@ -81,10 +80,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
-            <TextBlock Grid.Row="2"
-                       Text="No Notes"
-                       Visibility="{Binding NoteList.HasNoNotes, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"/>
         </Grid>
 
         <controls:ResizeHandle 
