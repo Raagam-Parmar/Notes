@@ -19,7 +19,7 @@ public partial class SingleNote : INotifyPropertyChanged
         Title = note.Title;
         Body = note.Body;
     }
-       
+
 
     public string Title
     {

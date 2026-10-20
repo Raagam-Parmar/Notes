@@ -55,7 +55,7 @@ public sealed partial class MainWindow : Window
 
     private void Splitter_PointerMoved(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
     {
-        if (! _isDragging) return;
+        if (!_isDragging) return;
 
         double currX = e.GetCurrentPoint(RootGrid).Position.X;
         double deltaX = currX - _startPointerX;
