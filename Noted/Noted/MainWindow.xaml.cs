@@ -17,6 +17,7 @@ public sealed partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        RootGrid.DataContext = this;
     }
 
     private void NewNoteButton_Click(object sender, RoutedEventArgs e)

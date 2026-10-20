@@ -15,7 +15,7 @@
         <MicaBackdrop />
     </Window.SystemBackdrop>
 
-    <Grid>
+    <Grid x:Name="RootGrid">
         <Grid.Resources>
             <converters:NullToVisibilityConverter
                 x:Key="NullToVisibilityConverter" />
@@ -81,7 +81,7 @@
 
 
         <Grid Grid.Column="1"
-              Visibility="{Binding NoteList.SelectedNote, Converter={StaticResource NullToVisibilityConverter}}">
+              Visibility="{Binding NoteList.SelectedNote, Mode=OneWay, Converter={StaticResource NullToVisibilityConverter}}">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
