@@ -6,6 +6,8 @@
     xmlns:local="using:Noted"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="using:Noted.ViewModels"
+    xmlns:converters="using:Noted.Converters"
     mc:Ignorable="d"
     Title="Noted">
 
@@ -14,6 +16,53 @@
     </Window.SystemBackdrop>
 
     <Grid>
+        <Grid.Resources>
+            <converters:NullToVisibilityConverter
+                x:Key="NullToVisibilityConverter" />
+            <converters:BoolToVisibilityConverter
+                x:Key="BoolToVisibilityConverter" />
+        </Grid.Resources>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="0"
+                   Text="No Notes"
+                   Visibility="{Binding NoteList.HasNoNotes, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+        <ListView Grid.Column="0"
+                  ItemsSource="{x:Bind NoteList.Notes}"
+                  SelectedItem="{x:Bind NoteList.SelectedNote, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="viewmodels:SingleNote">
+                    <TextBlock Text="{x:Bind Title}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid Grid.Column="1"
+              Visibility="{Binding NoteList.SelectedNote, Converter={StaticResource NullToVisibilityConverter}}">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBox Text="{x:Bind NoteList.SelectedNote.Title, Mode=TwoWay}"
+                     Name="Title"
+                     PlaceholderText="Title"
+                     Grid.Row="0"/>
+            
+            <TextBox Text="{x:Bind NoteList.SelectedNote.Body, Mode=TwoWay}"
+                     Name="Body"
+                     PlaceholderText="Body"
+                     Grid.Row="1"/>
+
+            <Button Content="New Note"
+                    Grid.Row="2"/>
+        </Grid>
     </Grid>
 </Window>
