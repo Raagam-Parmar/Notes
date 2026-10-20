@@ -1,6 +1,5 @@
 ﻿using System;
 
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Data;
 
 namespace Noted.Converters;
