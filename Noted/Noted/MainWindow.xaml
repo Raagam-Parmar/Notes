@@ -21,6 +21,8 @@
                 x:Key="NullToVisibilityConverter" />
             <converters:BoolToVisibilityConverter
                 x:Key="BoolToVisibilityConverter" />
+            <converters:TitleToDisplayTitleConverter
+                x:Key="TitleToDisplayTitleConverter" />
         </Grid.Resources>
 
         <Grid.ColumnDefinitions>
@@ -45,7 +47,7 @@
                       SelectedItem="{x:Bind NoteList.SelectedNote, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="viewmodels:SingleNote">
-                        <TextBlock Text="{x:Bind Title, Mode=TwoWay}"/>
+                        <TextBlock Text="{Binding Title, Mode=OneWay, Converter={StaticResource TitleToDisplayTitleConverter}}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
