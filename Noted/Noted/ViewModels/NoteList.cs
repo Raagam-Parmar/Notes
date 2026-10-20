@@ -28,12 +28,30 @@ public partial class NoteList : INotifyPropertyChanged
     }
 
     /// <summary>
-    /// Add a new note to the list
+    /// Is there at least one note in the list?
+    /// </summary>
+    public bool HasAtLeastOneNote
+    {
+        get => Notes.Count >= 1;
+    }
+
+    /// <summary>
+    /// Are there no notes in the list?
+    /// </summary>
+    public bool HasNoNotes
+    {
+        get => Notes.Count == 0;
+    }
+
+    /// <summary>
+    /// Add a new note to the list?
     /// </summary>
     /// <param name="note">Note to add</param>
     public void AddNote(SingleNote note)
     {
         Notes.Add(note);
+        OnPropertyChanged(nameof(HasNoNotes));
+        OnPropertyChanged(nameof(HasAtLeastOneNote));
     }
 
     /// <summary>
@@ -46,6 +64,9 @@ public partial class NoteList : INotifyPropertyChanged
 
         if (removeSuccess)
         {
+            OnPropertyChanged(nameof(HasNoNotes));
+            OnPropertyChanged(nameof(HasAtLeastOneNote));
+
             if (_selectedNote == note)
             {
                 SelectedNote = null;
