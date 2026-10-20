@@ -9,11 +9,19 @@ namespace Noted.ViewModels;
 /// Represents a single note selected by the user for editing
 /// </summary>
 /// <param name="note">The note to view</param>
-public partial class SingleNote(INote note) : INotifyPropertyChanged
+public partial class SingleNote : INotifyPropertyChanged
 {
-    private readonly INote _note = note;
+    private readonly INote _note;
 
-    public required string Title
+    public SingleNote(INote note)
+    {
+        _note = note;
+        Title = note.Title;
+        Body = note.Body;
+    }
+       
+
+    public string Title
     {
         get => _note.Title;
         set
@@ -25,7 +33,7 @@ public partial class SingleNote(INote note) : INotifyPropertyChanged
         }
     }
 
-    public required string Body
+    public string Body
     {
         get => _note.Body;
         set

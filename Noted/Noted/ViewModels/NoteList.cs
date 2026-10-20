@@ -4,6 +4,8 @@ using System.Runtime.CompilerServices;
 
 namespace Noted.ViewModels;
 
+using Noted.Models;
+
 /// <summary>
 /// Represents a list of available notes
 /// </summary>
@@ -46,10 +48,12 @@ public partial class NoteList : INotifyPropertyChanged
     /// <summary>
     /// Add a new note to the list?
     /// </summary>
-    /// <param name="note">Note to add</param>
-    public void AddNote(SingleNote note)
+    public void AddNote()
     {
-        Notes.Add(note);
+        Note note = new();
+        SingleNote singleNote = new(note);
+        Notes.Add(singleNote);
+
         OnPropertyChanged(nameof(HasNoNotes));
         OnPropertyChanged(nameof(HasAtLeastOneNote));
     }
